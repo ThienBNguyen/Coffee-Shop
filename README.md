@@ -1,6 +1,7 @@
 # Coffee-Shop-2020
 A simple Coffee Shop website using React
 Bao Nguyen
+Thien Nguyen
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
