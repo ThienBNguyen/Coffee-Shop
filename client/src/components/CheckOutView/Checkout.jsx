@@ -19,7 +19,6 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     instance: {},
     address: "",
   });
-  console.log(data);
   const userId = isAuthenticated() && isAuthenticated().user._id;
   const token = isAuthenticated() && isAuthenticated().token;
 

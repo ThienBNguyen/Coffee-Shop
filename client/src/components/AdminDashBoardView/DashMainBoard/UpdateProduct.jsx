@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../../auth";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { getProduct, getCategories, updateProduct } from "../../Core/apiAdmin";
 
 const UpdateProduct = ({ match }) => {
@@ -26,9 +26,7 @@ const UpdateProduct = ({ match }) => {
     name,
     description,
     price,
-    // categories,
-    category,
-    shipping,
+
     quantity,
     loading,
     error,

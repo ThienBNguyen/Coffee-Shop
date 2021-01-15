@@ -7,7 +7,6 @@ export const getProducts = (sortBy) => {
   })
     .then((response) => {
       return response.json();
-      console.log(response.json());
     })
     .catch((err) => console.log(err));
 };

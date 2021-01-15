@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
-import moment from "moment";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
-
-const Card = ({
+import Card from "react-bootstrap/Card";
+const MenuCard = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
@@ -16,7 +20,7 @@ const Card = ({
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-
+  // view individual product by ID
   const showViewButton = (showViewProductButton) => {
     return (
       showViewProductButton && (
@@ -30,12 +34,12 @@ const Card = ({
   };
   const addToCart = () => {
     // console.log('added');
-    addItem(product, setRedirect(true));
+    addItem(product, setRedirect(false));
   };
 
   const shouldRedirect = (redirect) => {
     if (redirect) {
-      return <Redirect to="/cart" />;
+      return <Redirect to="/menu" />;
     }
   };
 
@@ -52,13 +56,13 @@ const Card = ({
     );
   };
 
-  const showStock = (quantity) => {
-    return quantity > 0 ? (
-      <span className="badge badge-primary badge-pill">In Stock </span>
-    ) : (
-      <span className="badge badge-primary badge-pill">Out of Stock </span>
-    );
-  };
+  // const showStock = (quantity) => {
+  //   return quantity > 0 ? (
+  //     <span className="badge badge-primary badge-pill">In Stock </span>
+  //   ) : (
+  //     <span className="badge badge-primary badge-pill">Out of Stock </span>
+  //   );
+  // };
 
   const handleChange = (productId) => (event) => {
     setRun(!run); // run useEffect in parent Cart
@@ -103,7 +107,31 @@ const Card = ({
     );
   };
   return (
-    <div className="card ">
+    <Card
+      key={product.name}
+      style={{ width: "18rem" }}
+      className="bg-transparent border-transparent"
+    >
+      <ShowImage item={product} url="product" />
+      <Card.Body>
+        <Card.Title>{product.name}</Card.Title>
+        <Card.Text>{product.description.substring(0, 100)}</Card.Text>
+        <p>$ {product.price}</p>
+        {showViewButton(showViewProductButton)}
+
+        {showAddToCartBtn(showAddToCartButton)}
+
+        {showRemoveButton(showRemoveProductButton)}
+
+        {showCartUpdateOptions(cartUpdate)}
+      </Card.Body>{" "}
+    </Card>
+  );
+};
+
+export default MenuCard;
+{
+  /* <div className="card ">
       <div className="card-header card-header-1 ">{product.name}</div>
       <div className="card-body">
         {shouldRedirect(redirect)}
@@ -127,8 +155,5 @@ const Card = ({
 
         {showCartUpdateOptions(cartUpdate)}
       </div>
-    </div>
-  );
-};
-
-export default Card;
+    </div> */
+}

@@ -1,14 +1,13 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { signout, isAuthenticated } from "../../auth";
-
+import { itemTotal } from "../../MenuView/SubMenuView/cartHelpers";
 import "./style.scss";
+
 function NavBar() {
-  const [count, setCount] = useState(0);
   const [load, setLoad] = useState(false);
-  const accessToken = JSON.parse(localStorage.getItem("jwt"));
   return (
     <Navbar
       bg="black"
@@ -65,16 +64,16 @@ function NavBar() {
 
           <NavLink className="nav-link" to="/Cart">
             <ShoppingCartIcon />
-            {count}
+            <small className="cart-badge">{itemTotal()}</small>
           </NavLink>
         </Nav>
         {isAuthenticated() && isAuthenticated().user.role === 0 && (
-          <NavLink className="nav-item pr-3" to="user/dashboard">
+          <NavLink className="nav-item pr-3" to="menu">
             user Dashboard
           </NavLink>
         )}
         {isAuthenticated() && isAuthenticated().user.role === 1 && (
-          <NavLink className="nav-item pr-3" to="admin/dashboard">
+          <NavLink className="nav-item pr-3" to="menu">
             admin Dashboard
           </NavLink>
         )}

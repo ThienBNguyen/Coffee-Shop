@@ -1,17 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./SubMenu.scss";
 import { useIntersection } from "react-use";
-import {
-  getProducts,
-  getCategories,
-  getFilteredProducts,
-} from "../../Core/apiCore";
+import { getCategories, getFilteredProducts } from "../../Core/apiCore";
 
 import gsap from "gsap";
 import MenuIntro from "./MenuIntro/MenuIntro";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Card from "./MenuCard";
+import MenuCard from "./MenuCard";
 const SubMenuView = () => {
   const [isShown, setIsShown] = useState(false);
   const [drinkIsShow, drinkIsShown] = useState(true);
@@ -27,7 +23,7 @@ const SubMenuView = () => {
 
   const loadFilteredResultsDessert = (newFilters) => {
     getFilteredProducts(skip, limit, {
-      category: "5fee5d2992a86042c49974bd",
+      category: "6000cc0aa3c50665b8467f04",
     }).then((data) => {
       if (data.error) {
         setError(data.error);
@@ -41,7 +37,7 @@ const SubMenuView = () => {
   };
   const loadFilteredResultsDrink = (newFilters) => {
     getFilteredProducts(skip, limit, {
-      category: "5fee5d2992a86042c49974bd",
+      category: "5fea7e8231252e63a84703c7",
     }).then((data) => {
       if (data.error) {
         setError(data.error);
@@ -94,9 +90,36 @@ const SubMenuView = () => {
     });
   };
 
+  const showDessert = () => {
+    return (
+      <div className="container mt-5">
+        <div className="d-flex flex-row flex-wrap justify-content-center mb-5 ">
+          {filteredDessertResults.map((product, i) => (
+            <div key={i} className="m-1">
+              <MenuCard product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+  const showDrink = () => {
+    return (
+      <div className="container mt-5">
+        <div className="d-flex flex-row flex-wrap justify-content-center mb-5 ">
+          {filteredDrinkResults.map((product, i) => (
+            <div key={i} className="m-1">
+              <MenuCard product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
   intersection && intersection.intersectionRatio < 0.1
     ? fadeOut(".fadeIn")
     : fadeIn(".fadeIn");
+
   return (
     <div ref={sectionRef} className="p-5 text-center">
       <MenuIntro />
@@ -130,25 +153,29 @@ const SubMenuView = () => {
         {/* {isShown && <Desserts />}
         {drinkIsShow && <Drinks />} */}
 
-        <h2 className="mb-4">asd</h2>
-        <div className="row">
-          {filteredDrinkResults.map((product, i) => (
-            <div key={i} className="col-4 mb-3">
-              <Card product={product} />
-            </div>
-          ))}
-        </div>
-      </div>
-      <h2 className="mb-4">Products</h2>
-      <div className="row">
-        {filteredDessertResults.map((product, i) => (
-          <div key={i} className="col-4 mb-3">
-            <Card product={product} />
-          </div>
-        ))}
+        {isShown && showDessert()}
+        {drinkIsShow && showDrink()}
       </div>
     </div>
   );
 };
 
 export default SubMenuView;
+{
+  /* <h2 className="mb-4">asd</h2>
+        <div className="row justify-content-md-center">
+          {filteredDrinkResults.map((product, i) => (
+            <div key={i} className="m-1">
+              <MenuCard product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <h2 className="mb-4">Products</h2>
+      <div className="row justify-content-md-center">
+        {filteredDessertResults.map((product, i) => (
+          <div key={i} className="m-1">
+            <MenuCard product={product} />
+          </div>
+        ))}*/
+}

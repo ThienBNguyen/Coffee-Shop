@@ -193,11 +193,11 @@
 //   }
 // }
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { getCart } from "../../../MenuView/SubMenuView/cartHelpers";
-import Card from "../../../MenuView/SubMenuView/MenuCard";
-import Checkout from "../../../CheckOutView/Checkout";
+import ShopMenuCart from "./ShopMenuCart";
+import CartTotals from "./CartTotals";
 
 const Cart = () => {
   const [items, setItems] = useState([]);
@@ -209,21 +209,18 @@ const Cart = () => {
 
   const showItems = (items) => {
     return (
-      <div>
-        <h2>Your cart has {`${items.length}`} items</h2>
-        <hr />
+      <Fragment>
         {items.map((product, i) => (
-          <Card
+          <ShopMenuCart
             key={i}
             product={product}
-            showAddToCartButton={false}
             cartUpdate={true}
             showRemoveProductButton={true}
             setRun={setRun}
             run={run}
           />
         ))}
-      </div>
+      </Fragment>
     );
   };
 
@@ -234,15 +231,13 @@ const Cart = () => {
   );
 
   return (
-    <div className="row">
-      <div className="col-6">
-        {items.length > 0 ? showItems(items) : noItemsMessage()}
-      </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          {items.length > 0 ? showItems(items) : noItemsMessage()}
+        </div>
 
-      <div className="col-6">
-        <h2 className="mb-4">Your cart summary</h2>
-        <hr />
-        <Checkout products={items} setRun={setRun} run={run} />
+        <CartTotals products={items} setRun={setRun} run={run} />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { isAuthenticated } from "../../auth";
 
 export default function DashAccInfo(props) {
   const {
-    user: { _id, name, email, role },
+    user: { _id },
   } = isAuthenticated();
   return (
     <div className="myTabPanel">
