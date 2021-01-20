@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
-import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Card";
-import Table from "react-bootstrap/Table";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
+
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 import Card from "react-bootstrap/Card";
 const MenuCard = ({

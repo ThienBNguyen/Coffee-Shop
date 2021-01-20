@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 // import "braintree-web"; // not using this package
 import DropIn from "braintree-web-drop-in-react";
 
-const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
+const CheckOut = ({ products, setRun = (f) => f, run = undefined }) => {
   const [data, setData] = useState({
     loading: false,
     success: false,
@@ -175,8 +175,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     loading && <h2 className="text-danger">Loading...</h2>;
 
   return (
-    <div>
-      <h2>Total: ${getTotal()}</h2>
+    <div className="check-out">
       {showLoading(data.loading)}
       {showSuccess(data.success)}
       {showError(data.error)}
@@ -185,4 +184,4 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   );
 };
 
-export default Checkout;
+export default CheckOut;

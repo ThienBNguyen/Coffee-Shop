@@ -198,7 +198,7 @@ import { Link } from "react-router-dom";
 import { getCart } from "../../../MenuView/SubMenuView/cartHelpers";
 import ShopMenuCart from "./ShopMenuCart";
 import CartTotals from "./CartTotals";
-
+import CheckOut from '../../../CheckOutView/CheckOut'
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [run, setRun] = useState(false);
@@ -233,12 +233,16 @@ const Cart = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 mt-5">
           {items.length > 0 ? showItems(items) : noItemsMessage()}
         </div>
-
+        <div className="container">
+    <div className="cartTotal">
         <CartTotals products={items} setRun={setRun} run={run} />
-      </div>
+        <CheckOut products={items} setRun={setRun} run={run} />
+        </div>
+    </div>
+      </div >
     </div>
   );
 };

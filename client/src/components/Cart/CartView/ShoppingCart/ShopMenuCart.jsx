@@ -91,7 +91,6 @@ export default function ShopMenuCart({
   };
   const handleItemTotal = (currentCount, currentPrice) => {
     let total = currentCount * currentPrice;
-
     return total;
   };
   const showSelectItem = () => {
@@ -141,7 +140,7 @@ export default function ShopMenuCart({
         </thead>
         {showSelectItem()}
       </Table>
-      <div>{/* <CartTotals /> */}</div>
+      {/* <div><CartTotals /></div> */}
     </div>
   );
 }
