@@ -1,11 +1,8 @@
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
 import {
-  addItem,
   updateItem,
   removeItem,
 } from "../../../MenuView/SubMenuView/cartHelpers";
-import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -14,8 +11,7 @@ import { API } from "../../../../config";
 import Card from "react-bootstrap/Card";
 export default function ShopMenuCart({
   product,
-  showViewProductButton = true,
-  showAddToCartButton = true,
+
   cartUpdate = false,
   showRemoveProductButton = false,
   setRun = (f) => f,
@@ -24,7 +20,6 @@ export default function ShopMenuCart({
 }) {
   const [count, setCount] = useState(product.count);
   const [productPrice, SetProductPrice] = useState(product.price);
-  const [totalPrice, setTotalPrice] = useState(0);
   const CartImage = ({ item, url }) => (
     <Fragment>
       <Card.Img
@@ -38,17 +33,17 @@ export default function ShopMenuCart({
       />
     </Fragment>
   );
-  const showViewButton = (showViewProductButton) => {
-    return (
-      showViewProductButton && (
-        <Link to={`/product/${product._id}`} className="mr-2">
-          <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">
-            View Product
-          </button>
-        </Link>
-      )
-    );
-  };
+  // const showViewButton = (showViewProductButton) => {
+  //   return (
+  //     showViewProductButton && (
+  //       <Link to={`/product/${product._id}`} className="mr-2">
+  //         <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">
+  //           View Product
+  //         </button>
+  //       </Link>
+  //     )
+  //   );
+  // };
   const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../../auth";
-import { Link } from "react-router-dom";
 import { createProduct, getCategories } from "../../admin/apiAdmin";
 
 const AddProduct = () => {
@@ -26,13 +25,10 @@ const AddProduct = () => {
     description,
     price,
     categories,
-    category,
-    shipping,
     quantity,
     loading,
     error,
     createdProduct,
-    redirectToProfile,
     formData,
   } = values;
 

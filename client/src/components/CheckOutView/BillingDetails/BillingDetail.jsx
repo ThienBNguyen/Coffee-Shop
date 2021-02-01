@@ -1,6 +1,5 @@
 import "react-toastify/dist/ReactToastify.css";
 import React, { Component } from "react";
-let userID = JSON.parse(localStorage.getItem("userID"));
 
 export default class SubCheckOut extends Component {
   state = {

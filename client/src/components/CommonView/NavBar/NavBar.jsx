@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React,{useEffect} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -7,7 +7,12 @@ import { itemTotal } from "../../MenuView/SubMenuView/cartHelpers";
 import "./style.scss";
 
 function NavBar() {
-  const [load, setLoad] = useState(false);
+  // const [load, setLoad] = useState(false);
+  
+  const itemNum = () =>{
+    return (
+    <small className="cart-badge">{itemTotal()}</small>
+)}
   return (
     <Navbar
       bg="black"
@@ -64,36 +69,49 @@ function NavBar() {
 
           <NavLink className="nav-link" to="/Cart">
             <ShoppingCartIcon />
-            <small className="cart-badge">{itemTotal()}</small>
+            {itemNum()}
           </NavLink>
         </Nav>
         {isAuthenticated() && isAuthenticated().user.role === 0 && (
-          <NavLink className="nav-item pr-3" to="menu">
+          <NavLink className="nav-item pr-3" to="user/dashboard" 
+          activeClassName="link-active"
+
+          className="nav-link"
+          >
             user Dashboard
           </NavLink>
         )}
         {isAuthenticated() && isAuthenticated().user.role === 1 && (
-          <NavLink className="nav-item pr-3" to="menu">
+          <NavLink className="nav-item pr-3" to="admin/dashboard"
+          activeClassName="link-active"
+
+          className="nav-link"
+          >
             admin Dashboard
           </NavLink>
         )}
         {!isAuthenticated() && (
           <Nav>
-            <NavLink className="nav-item pr-3" to="/register">
+            <NavLink className="nav-link pr-3"
+            activeClassName="link-active"
+            to="/register">
               register
             </NavLink>
-            <NavLink className="nav-item" to="/login">
-              loginin
+            <NavLink  className="nav-link"
+            activeClassName="link-active"
+            to="/login">
+              Log In
             </NavLink>
           </Nav>
         )}
         {isAuthenticated() && (
           <Nav>
             <NavLink
-              className="nav-item"
+               className="nav-link"
               to="/home"
               onClick={() =>
                 signout(() => {
+
                   window.location.reload(false);
                 })
               }

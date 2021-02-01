@@ -4,11 +4,11 @@ const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
 exports.signup = async (req, res) => {
     // console.log("req.body", req.body);
-    
+    //create new user
     const user = new User(req.body);
     await user.save((err, user) => {
         if (err) {
-
+            // check error
             return res.status(400).json({
                 error: 'Email is taken'
             });
@@ -20,10 +20,10 @@ exports.signup = async (req, res) => {
         });
     });
 };
-exports.signin = async(req, res) => {
+exports.signin = async (req, res) => {
     // find the user based on email
     const { email, password } = req.body;
-    await  User.findOne({ email }, (err, user) => {
+    await User.findOne({ email }, (err, user) => {
         console.log(user)
         if (err || !user) {
             return res.status(400).json({
@@ -55,7 +55,7 @@ exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRET,
     algorithms: ["HS256"], // added later
     userProperty: "auth",
-  });
+});
 exports.isAuth = (req, res, next) => {
     let user = req.profile && req.auth && req.profile._id == req.auth._id;
     if (!user) {

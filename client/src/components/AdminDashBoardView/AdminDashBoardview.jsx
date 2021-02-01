@@ -1,30 +1,12 @@
-import React, { useState, useEffect } from "react";
-
-import { Link } from "react-router-dom";
-
+import React from "react";
 import DashSideBoard from "./DashSideBoard/DashSideBoard";
 import "./AdminDashBoardView.scss";
 import { isAuthenticated } from "../auth";
 
 const DashBoardview = () => {
   const {
-    user: { _id, name, email, role },
+    user: {  name, email },
   } = isAuthenticated();
-  const token = isAuthenticated().token;
-
-  // const init = (userId, token) => {
-  //   getPurchaseHistory(userId, token).then((data) => {
-  //     if (data.error) {
-  //       console.log(data.error);
-  //     } else {
-  //       setHistory(data);
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   init(_id, token);
-  // }, []);
   return (
     <div>
       <div className="dashboard-intro">

@@ -122,7 +122,7 @@ const SubMenuView = () => {
 
   return (
     <div ref={sectionRef} className="p-5 text-center">
-      <MenuIntro />
+      <MenuIntro error={error} categories={categories} />
       <ButtonGroup aria-label="Basic example" className="mt-5 mb-5 fadeIn">
         <Button
           variant="outline-light"
@@ -161,21 +161,4 @@ const SubMenuView = () => {
 };
 
 export default SubMenuView;
-{
-  /* <h2 className="mb-4">asd</h2>
-        <div className="row justify-content-md-center">
-          {filteredDrinkResults.map((product, i) => (
-            <div key={i} className="m-1">
-              <MenuCard product={product} />
-            </div>
-          ))}
-        </div>
-      </div>
-      <h2 className="mb-4">Products</h2>
-      <div className="row justify-content-md-center">
-        {filteredDessertResults.map((product, i) => (
-          <div key={i} className="m-1">
-            <MenuCard product={product} />
-          </div>
-        ))}*/
-}
+

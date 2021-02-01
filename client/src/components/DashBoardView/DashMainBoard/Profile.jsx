@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../../auth/index";
-import { Link, Redirect } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 import { read, update, updateUser } from "../../Core/apiUser";
 
 const Profile = ({ match }) => {
@@ -8,7 +8,6 @@ const Profile = ({ match }) => {
     name: "",
     email: "",
     password: "",
-    error: false,
     success: false,
   });
 

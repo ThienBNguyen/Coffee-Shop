@@ -43,7 +43,7 @@ const Product = (props) => {
         <h4>Related products</h4>
         {relatedProduct.map((p, i) => (
           <div className="mb-3" key={i}>
-            <MenuCard product={p} />
+            <MenuCard product={p} error={error}/>
           </div>
         ))}
       </div>

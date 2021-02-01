@@ -3,11 +3,9 @@
 //did not use this component //
 
 import IntroComponent from '../CommonView/IntroComponent/IntroComponent';
-import CheckOut from './CheckOut'
 import BillingDetail from './BillingDetails/BillingDetail';
 import Payment from './Payment/Payment';
 import React, { Component } from 'react';
-import CartTotals from '../Cart/CartView/ShoppingCart/CartTotals';
 export default class CheckOutView extends Component {
   render() {
     return (
@@ -21,8 +19,7 @@ export default class CheckOutView extends Component {
           </div>
           <div className="row justify-content-end">
             <div className="col col-lg-3 col-md-6 mt-5 cart-wrap ">
-              {/* <CartTotals /> */}
-              {/* <CheckOut/> */}
+             
               <Payment />
             </div>
           </div>

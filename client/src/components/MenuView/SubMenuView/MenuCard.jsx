@@ -33,11 +33,11 @@ const MenuCard = ({
     addItem(product, setRedirect(false));
   };
 
-  const shouldRedirect = (redirect) => {
-    if (redirect) {
-      return <Redirect to="/menu" />;
-    }
-  };
+  // const shouldRedirect = (redirect) => {
+  //   if (redirect) {
+  //     return <Redirect to="/menu" />;
+  //   }
+  // };
 
   const showAddToCartBtn = (showAddToCartButton) => {
     return (
@@ -106,14 +106,14 @@ const MenuCard = ({
     <Card
       key={product.name}
       style={{ width: "18rem" }}
-      className="bg-transparent border-transparent"
+      className="bg-transparent border-transparent m-3 text-light"
     >
       <ShowImage item={product} url="product" />
       <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+        <Card.Title className="light-text">{product.name}</Card.Title>
         <Card.Text>{product.description.substring(0, 100)}</Card.Text>
         <p>$ {product.price}</p>
-        {showViewButton(showViewProductButton)}
+        {/* {showViewButton(showViewProductButton)} */}
 
         {showAddToCartBtn(showAddToCartButton)}
 
@@ -126,30 +126,3 @@ const MenuCard = ({
 };
 
 export default MenuCard;
-{
-  /* <div className="card ">
-      <div className="card-header card-header-1 ">{product.name}</div>
-      <div className="card-body">
-        {shouldRedirect(redirect)}
-        <ShowImage item={product} url="product" />
-        <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
-        <p className="card-p black-10">$ {product.price}</p>
-        <p className="black-9">
-          Category: {product.category && product.category.name}
-        </p>
-        <p className="black-8">
-          Added on {moment(product.createdAt).fromNow()}
-        </p>
-        {showStock(product.quantity)}
-        <br />
-
-        {showViewButton(showViewProductButton)}
-
-        {showAddToCartBtn(showAddToCartButton)}
-
-        {showRemoveButton(showRemoveProductButton)}
-
-        {showCartUpdateOptions(cartUpdate)}
-      </div>
-    </div> */
-}

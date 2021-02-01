@@ -35,11 +35,13 @@ const LoginView = () => {
             redirectToReferrer: true,
           });
         });
+        window.location.reload(false);
+        
       }
     });
   };
 
-  const signUpForm = () => (
+  const signInForm = () => (
     <form class="form-signin">
       <div class="form-label-group">
         <input
@@ -125,8 +127,9 @@ const LoginView = () => {
               <div>
                 {showLoading()}
                 {showError()}
-                {signUpForm()}
-                {redirectUser()}
+                {signInForm()}
+               {redirectUser()}
+
               </div>
             </div>
           </div>
